@@ -15,6 +15,8 @@ powerDat2 <- powerDat[(powerDat$DT >= startdate & powerDat$DT <= enddate),] # su
 
 
 ## Construct Plot 3
+png(filename = 'plot3.png', width = 480, height = 480)
+
 # Set up the plot area
 with(powerDat2, plot(DT, Sub_metering_1, type = "n", xlab = "", ylab = "Energy sub metering"))
 # Plot Sub_metering_1
@@ -25,3 +27,5 @@ with(powerDat2, points(DT, Sub_metering_2, type = "l", col = "red"))
 with(powerDat2, points(DT, Sub_metering_3, type = "l", col = "blue"))
 # Add legend
 legend("topright", lty = 1 , pt.cex = 1, cex = 0.8, col = c("black", "red", "blue"), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+
+dev.off()

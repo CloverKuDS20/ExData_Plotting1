@@ -15,5 +15,8 @@ powerDat2 <- powerDat[(powerDat$DT >= startdate & powerDat$DT <= enddate),] # su
 
 
 ## Construct Plot 2
+png(filename = 'plot2.png', width = 480, height = 480)
+
 plot(powerDat2$DT, powerDat2$Global_active_power, type = "l", xlab = "", ylab = "Global Active Power (kilowatts)")
 
+dev.off()

@@ -15,14 +15,16 @@ powerDat2 <- powerDat[(powerDat$DT >= startdate & powerDat$DT <= enddate),] # su
 
 
 ## Construct Plot 4
+png(filename = 'plot4.png', width = 480, height = 480)
+
 # Split graphing area into 4
 par(mfrow = c(2,2), omr = c(0, 0, 0, 0), mar = c(4, 4, 2, 1))
 
 # Add Plot 1
-plot(powerDat2$DT, powerDat2$Global_active_power, cex.axis = 0.8, type = "l", xlab = "", ylab = "Global Active Power")
+plot(powerDat2$DT, powerDat2$Global_active_power, type = "l", xlab = "", ylab = "Global Active Power")
 
 # Add Plot 2
-plot(powerDat2$DT, powerDat2$Voltage, cex.axis = 0.8, type = "l", xlab = "datetime", ylab = "Voltage")
+plot(powerDat2$DT, powerDat2$Voltage, type = "l", xlab = "datetime", ylab = "Voltage")
 
 # Add Plot 3
 # Set up the plot area
@@ -34,8 +36,11 @@ with(powerDat2, points(DT, Sub_metering_2, type = "l", col = "red"))
 # Plot Sub_metering_3
 with(powerDat2, points(DT, Sub_metering_3, type = "l", col = "blue"))
 # Add legend
-legend("topright", pt.cex = 1, cex = 0.8, bty = "n", lty = 1 , col = c("black", "red", "blue"), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+legend("topright", bty = "n", lty = 1 , col = c("black", "red", "blue"), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
 
 # Add Plot 4
-plot(powerDat2$DT, powerDat2$Global_reactive_power, cex.axis = 0.8, ylim = c(0, 0.5), type = "l", xlab = "datetime", ylab = "Global_reactive_power")
+plot(powerDat2$DT, powerDat2$Global_reactive_power, ylim = c(0, 0.5), type = "l", xlab = "datetime", ylab = "Global_reactive_power")
+
+
+dev.off()
 
